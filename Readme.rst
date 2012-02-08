@@ -33,24 +33,27 @@ or may not be the latest available ZooKeeper version.
 Installing on OS X (homebrew)
 """""""""""""""""""""""""""""
 
-    If you don't have homebrew, follow the Linux installation below, skipping "ldconfig"
+If you don't have homebrew, follow the Linux installation below, skipping "ldconfig", otherwise, use homebrew to install zookeeper with the ``--python`` flag:
 
     $ brew install --python zookeeper
 
 Installing on Linux
 """""""""""""""""""
 
-    # Download and unpack the latest release of ZooKeeper from http://zookeeper.apache.org/releases.html
+Download and unpack the latest release of ZooKeeper from http://zookeeper.apache.org/releases.html:
+
     $ tar -zxvf zookeeper-3.4.2.tar.gz
 
-    # Build the C bindings:
+Build the C bindings:
+
     $ cd zookeeper-3.4.2/src/c
     $ ./configure --prefix=/usr/local
     $ make
     $ sudo make install
     $ ldconfig
 
-    # Build and install the python bindings:
+Build and install the python bindings:
+
     $ cd ../contrib/zkpython
     $ ant install
 
