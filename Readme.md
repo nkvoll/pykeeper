@@ -1,12 +1,10 @@
-pykeeper: Higher-level bindings for ZooKeeper
-=============================================
+# pykeeper: Higher-level bindings for ZooKeeper
 
 
 The aim of this project is providing a higher level API over the official low level Python ZooKeeper bindings (zkpython).
 
 
-Features
---------
+## Features
 
     * Automatic reconnection
     * Recursive delete
@@ -15,8 +13,7 @@ Features
     * Easy handling and masking of temporary disconnects/reconnects.
 
 
-Installing
-----------
+## Installing
 
 Either install the latest relase from PYPI:
 
@@ -27,26 +24,24 @@ Either install the latest relase from PYPI:
     $ pip install https://github.com/nkvoll/pykeeper/zipball/develop#egg=pykeeper
 
 Additionally, pykeeper requires a working installation of the official low level Python ZooKeeper bindings. These can either be built from source (recommended, explanation below), or
-you could install the statically compiled version (`zc-zookeeper-static <http://pypi.python.org/pypi/zc-zookeeper-static>`_) from PYPI, which may or may not work on your architecture/OS, and may
+you could install the statically compiled version [zc-zookeeper-static](http://pypi.python.org/pypi/zc-zookeeper-static)) from PYPI, which may or may not work on your architecture/OS, and may
 or may not be the latest available ZooKeeper version.
 
-Installing on OS X (homebrew)
-"""""""""""""""""""""""""""""
+
+### Installing ZooKeeper on OS X (homebrew)
 
 If you don't have homebrew, follow the Linux installation below, skipping "ldconfig", otherwise, use homebrew to install zookeeper with the ``--python`` flag:
 
     $ brew install --python zookeeper
 
-Installing on Linux
-"""""""""""""""""""
+
+### Installing ZooKeeper on Linux
 
 Download and unpack the latest release of ZooKeeper from http://zookeeper.apache.org/releases.html:
 
     $ tar -zxvf zookeeper-3.4.2.tar.gz
 
 Build the C bindings:
-
-.. code-block:: bash
 
     $ cd zookeeper-3.4.2/src/c
     $ ./configure --prefix=/usr/local
@@ -60,8 +55,7 @@ Build and install the python bindings:
     $ ant install
 
 
-Running the test-suite
-----------------------
+## Running the test-suite
 
 The test suite assumes you have a ZooKeeper server running on localhost:22181:
 
@@ -75,8 +69,7 @@ The tests can then be run via the setup.py script:
     $ python setup.py nosetests -with-doctest --verbosity=2
 
 
-Example usage
--------------
+## Example usage
 
     $ python
     >>> import pykeeper
@@ -121,8 +114,8 @@ Example usage
     zookeeper.NoNodeException: no node
 
 
-Handling transient connection errors/losses
-"""""""""""""""""""""""""""""""""""""""""""
+### Handling transient connection errors/losses
+
 
 If we lose connection to the ZooKeeper server, calls on the client will raise an exception:
 
@@ -154,13 +147,11 @@ If the connection is not re-established before the timeout occurs, a TimeoutExce
     >>> client.state_name
     'connecting'
 
-Notes
------
+## Notes
 
 Currently, only the synchronous parts of the API is implemented.
 
 
-License
--------
+## License
 
 MIT licensed, see LICENSE for details.

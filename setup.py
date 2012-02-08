@@ -13,7 +13,7 @@ setup(
 
     author = 'Njal Karevoll',
     description = 'Higher-level bindings for ZooKeeper.',
-    long_description = open('Readme.rst').read(),
+    long_description = open('Readme.md').read(),
 
     license = 'MIT',
 
