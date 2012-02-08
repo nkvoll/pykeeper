@@ -147,6 +147,36 @@ If the connection is not re-established before the timeout occurs, a TimeoutExce
     >>> client.state_name
     'connecting'
 
+
+## Troubleshooting
+
+### Q: Why do I get a ``TypeError`` when I call any functions on the client?
+
+A: Most likely, you attempted to do something along the following lines:
+
+    >>> import pykeeper
+    >>> client = pykeeper.ZooKeeper('localhost:22181')
+    >>> client.get_children('/')
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+      File "pykeeper/client.py", line 153, in get_children
+        return zookeeper.get_children(self.handle, path, self._wrap_watcher(watcher))
+    TypeError: an integer is required
+
+The problem is that you forgot to call ``client.connect()`` before using the client:
+
+    >>> import pykeeper
+    >>> client = pykeeper.ZooKeeper('localhost:22181')
+    >>> client.connect()
+    >>> client.get_children('/')
+    ['zookeeper']
+
+As usual, consider calling ``client.wait_until_connected(timeout=...)`` before using the client to ensure that the client has had time to connect to the ZooKeeper ensemble.
+
+### Q: I'm creating a multiple clients, and I seem to be leaking memory.
+A: Always close clients you are not going to use any more by calling ``client.close()``. Another solution is to re-use the clients instead of creating a new one every time you need one.
+
+
 ## Notes
 
 Currently, only the synchronous parts of the API is implemented.
