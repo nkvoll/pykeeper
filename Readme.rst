@@ -46,6 +46,8 @@ Download and unpack the latest release of ZooKeeper from http://zookeeper.apache
 
 Build the C bindings:
 
+.. code-block:: bash
+
     $ cd zookeeper-3.4.2/src/c
     $ ./configure --prefix=/usr/local
     $ make
