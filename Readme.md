@@ -3,6 +3,8 @@
 
 The aim of this project is providing a higher level API over the official low level Python ZooKeeper bindings (zkpython).
 
+For django support see [djkeeper](http://github.com/nkvoll/djkeeper).
+
 
 ## Features
 

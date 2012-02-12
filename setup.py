@@ -9,7 +9,7 @@ if 'test' in sys.argv:
 
 setup(
     name = "pykeeper",
-    version = "0.1.1",
+    version = "0.2.1",
 
     author = 'Njal Karevoll',
     author_email = 'njal@karevoll.no',
@@ -21,8 +21,6 @@ setup(
 
     keywords = 'zookeeper',
 
-    include_package_data = True,
-
     url = 'http://github.com/nkvoll/pykeeper',
 
     # enable python setup.py nosetests
@@ -31,4 +29,13 @@ setup(
     tests_require = ['mock'],
 
     packages = find_packages(),
+
+    classifiers = [
+        'Development Status :: 4 - Beta',
+        'License :: OSI Approved :: MIT License',
+        'Intended Audience :: Developers',
+        'Intended Audience :: System Administrators',
+        'Programming Language :: Python :: 2.6',
+        'Programming Language :: Python :: 2.7',
+    ]
 )

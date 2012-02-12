@@ -73,6 +73,7 @@ class ZooKeeper(object):
         self._caches = dict()
 
         self.on_state = event.Event()
+        self.on_event = event.Event()
 
     def connect(self):
         self.handle = zookeeper.init(self.servers, self._global_watcher)
@@ -94,9 +95,10 @@ class ZooKeeper(object):
         assert handle == self.handle, 'unexpected handle'
 
         event = ClientEvent(event_type, conn_state, path)
-        self.on_state(self, self.state_name)
-
         logger.debug('{0}: Received event {1}'.format(self, event))
+
+        self.on_event(event)
+        self.on_state(self, self.state_name)
 
         if event.state_name == 'expired' and self.reconnect:
             logger.info('{0}: Session expired, reconnecting.'.format(self))
