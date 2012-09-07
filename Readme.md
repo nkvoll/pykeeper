@@ -1,5 +1,7 @@
 # pykeeper: Higher-level bindings for ZooKeeper
 
+# No longer maintained, supersceded by Kazoo: https://github.com/python-zk/kazoo
+
 
 The aim of this project is providing a higher level API over the official low level Python ZooKeeper bindings (zkpython).
 
